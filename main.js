@@ -39,7 +39,6 @@ const sourceInfoAnswer =
 
 // Keywords for local handling
 const developerKeywords = [
-  "المطور",
   "مين يوسف",
   "من هو جورج",
   "who developed you",
