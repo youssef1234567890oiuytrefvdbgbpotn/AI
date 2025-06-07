@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="مساعد جامعة المنيا الذكي - كلية التربية النوعية - قسم تكنولوجيا التعليم"
+    />
+    <meta name="theme-color" content="#1e1e1e" />
+    <title>مساعد جامعة المنيا الذكي</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo-container" style="margin-left: auto">
+          <div class="logo">
+            <img
+              src="logoooo.png"
+              alt="شعار جامعة المنيا"
+              class="logo-img"
+              onerror="this.src='/api/placeholder/100/100'; this.onerror=null;"
+            />
+          </div>
+          <div class="header-text">
+            <h1>مساعد جامعة المنيا الذكي</h1>
+            <p>كلية التربية النوعية - قسم تكنولوجيا التعليم</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button
+            id="dark-mode-toggle"
+            title="تبديل الوضع الليلي"
+            class="dark-mode-btn"
+            aria-label="تبديل الوضع الليلي"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+          <button
+            id="language-toggle"
+            title="Switch Language"
+            class="language-btn"
+            aria-label="Switch Language"
+          >
+            EN
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="chat-container">
+        <div class="chat-messages" id="chat-messages">
+          <div
+            class="message bot-message welcome-message"
+            id="welcome-message-ar"
+          >
+            <p>مرحباً بك في مساعد جامعة المنيا الذكي!</p>
+            <p>
+              كيف يمكنني مساعدتك اليوم في قسم تكنولوجيا التعليم بكلية التربية
+              النوعية؟
+            </p>
+            <p class="small-text">
+              <strong
+                >تم تطوير هذا المساعد بواسطة طلاب في قسم تكنولوجيا
+                التعليم.</strong
+              >
+            </p>
+          </div>
+          <div
+            class="message bot-message welcome-message"
+            id="welcome-message-en"
+            style="display: none"
+          >
+            <p>Welcome to Minia University Smart Assistant!</p>
+            <p>
+              How can I assist you today in the Educational Technology
+              Department at the Faculty of Specific Education?
+            </p>
+            <p class="small-text">
+              <strong
+                >This assistant was developed by students in the Educational
+                Technology Department.</strong
+              >
+            </p>
+          </div>
+          <div
+            class="message bot-message news-message"
+            id="news-message"
+            style="display: none"
+          >
+            <strong>آخر الأخبار:</strong>
+            <span id="news-content">جاري تحميل الأخبار...</span>
+          </div>
+          <div class="suggestions-container" id="suggestions">
+            <button
+              class="suggestion"
+              aria-label="مقدمة عن قسم تكنولوجيا التعليم"
+            >
+              مقدمة عن قسم تكنولوجيا التعليم
+            </button>
+            <button class="suggestion" aria-label="البرامج الأكاديمية المتاحة">
+              البرامج الأكاديمية المتاحة
+            </button>
+            <button class="suggestion" aria-label="المواد الدراسية والمناهج">
+              المواد الدراسية والمناهج
+            </button>
+            <button class="suggestion" aria-label="أعضاء هيئة التدريس">
+              أعضاء هيئة التدريس
+            </button>
+            <button class="suggestion" aria-label="الأنشطة البحثية والمشاريع">
+              الأنشطة البحثية والمشاريع
+            </button>
+            <button class="suggestion" aria-label="معلومات الاتصال بالقسم">
+              معلومات الاتصال بالقسم
+            </button>
+          </div>
+        </div>
+
+        <form class="chat-input-container" id="chat-form">
+          <input
+            type="text"
+            id="message-input"
+            placeholder="اكتب رسالتك هنا..."
+            aria-label="رسالتك"
+            autocomplete="off"
+          />
+          <button
+            type="button"
+            class="voice-btn"
+            id="voice-input-btn"
+            title="تحدث"
+            aria-label="تحدث"
+          >
+            <i class="fas fa-microphone"></i>
+          </button>
+          <button
+            type="submit"
+            class="send-btn"
+            id="send-button"
+            title="إرسال"
+            aria-label="إرسال"
+          >
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+
+        <div class="developer-info-container">
+          <button
+            id="developer-info-btn"
+            class="suggestion"
+            aria-label="عن المطورين"
+          >
+            عن المطورين
+          </button>
+          <button id="alerts-btn" class="suggestion" aria-label="تنبيهات">
+            تنبيهات
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <template id="typing-indicator-template">
+      <div class="message bot-message typing-indicator">
+        <div class="typing-indicator-dots">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </template>
+
+    <div id="developer-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal-btn" title="إغلاق" aria-label="إغلاق">
+          ×
+        </button>
+        <h3 class="george">عن المطورين</h3>
+        <div class="developer-details">
+          <p class="developer-details-p">
+            تم تطوير هذا المشروع بواسطة طلاب قسم تكنولوجيا التعليم بكلية التربية
+            النوعية، جامعة المنيا.
+          </p>
+          <div class="developer">
+            <div class="adel">
+              <strong class="developer-strong">جورج عادل فرج الله \يوسف شعبان محمد</strong><br />
+              البريد الإلكتروني:
+              <a
+                href="mailto:georgeadel502@gmail.com"
+                title="إرسال بريد إلكتروني"
+                >georgeadel502@gmail.com</a
+              ><br />
+              رقم الهاتف:
+              <a href="tel:01278936828" title="اتصل بنا">01278936828</a>
+            </div>
+          </div>
+          <hr />
+    
+          <hr />
+          <p>
+            <strong>الهدف من المشروع:</strong> تقديم مساعد ذكي للطلاب لتسهيل
+            الوصول إلى المعلومات الأكاديمية الخاصة بالقسم.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="alerts-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal-btn" title="إغلاق" aria-label="إغلاق">
+          ×
+        </button>
+        <h3>تنبيهات</h3>
+        <div class="alerts-container" id="alerts-container">
+          <p class="no-alerts">لا توجد تنبيهات حالياً</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <p>
+          © 2025 - مساعد جامعة المنيا الذكي (نسخة تجريبية - المالك: جورج عادل\يوسف شعبان محد)
+        </p>
+        <p class="version">الإصدار 1.0.0</p>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
